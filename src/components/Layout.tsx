@@ -118,9 +118,9 @@ export default function Layout({ children }: LayoutProps) {
         <div className="flex flex-col md:flex-row items-center justify-between p-6 font-mono text-xs text-[#888]">
           <span>SAMPLES.CLICK © {new Date().getFullYear()}</span>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-[#fffef8] transition-colors">PRIVACY POLICY</a>
-            <a href="#" className="hover:text-[#fffef8] transition-colors">TERMS OF SERVICE</a>
-            <a href="#" className="hover:text-[#fffef8] transition-colors">DATA LICENSE</a>
+            <Link to="/privacy" className="hover:text-[#fffef8] transition-colors">PRIVACY POLICY</Link>
+            <Link to="/terms" className="hover:text-[#fffef8] transition-colors">TERMS OF SERVICE</Link>
+            <Link to="/license" className="hover:text-[#fffef8] transition-colors">DATA LICENSE</Link>
           </div>
         </div>
       </footer>
