@@ -126,8 +126,8 @@ export default function Careers() {
         </div>
 
         <div className="border-4 border-[#0a0a0a]">
-          {jobs.map((job, i) => (
-            <div key={job.id} className={`border-b-2 border-[#0a0a0a] last:border-b-0`}>
+          {jobs.map((job) => (
+            <div key={job.id} className="border-b-2 border-[#0a0a0a] last:border-b-0">
               <button
                 onClick={() => setExpandedJob(expandedJob === job.id ? null : job.id)}
                 className="w-full text-left"
