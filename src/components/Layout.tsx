@@ -8,11 +8,16 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   const location = useLocation()
   const [currentTime, setCurrentTime] = useState(new Date())
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000)
     return () => clearInterval(timer)
   }, [])
+
+  useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [location.pathname])
 
   const navItems = [
     { path: '/', label: 'HOME' },
@@ -45,6 +50,15 @@ export default function Layout({ children }: LayoutProps) {
           background: #0a0a0a !important;
           color: #fffef8 !important;
         }
+
+        .mobile-menu {
+          transform: translateX(100%);
+          transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.open {
+          transform: translateX(0);
+        }
       `}</style>
 
       <div className="fixed top-0 left-0 right-0 z-50 bg-[#fffef8] border-b-4 border-[#0a0a0a]">
@@ -54,11 +68,12 @@ export default function Layout({ children }: LayoutProps) {
             <span className="mx-8">▸ DATASETS FOR ROBOTICS ▸ INDUSTRIAL TRAINING DATA ▸ MEDICAL HANDWRITING ▸ ROBOTIC MANIPULATION ▸ SCALE YOUR AI ▸ </span>
           </div>
         </div>
-        <nav className="flex items-center justify-between px-6 py-4">
-          <Link to="/" className="font-display text-2xl tracking-tight hover:text-[#ff3366] transition-colors">
+        <nav className="flex items-center justify-between px-4 md:px-6 py-4">
+          <Link to="/" className="font-display text-xl md:text-2xl tracking-tight hover:text-[#ff3366] transition-colors">
             SAMPLES▼CLICK
           </Link>
-          <div className="flex items-center gap-2 font-mono text-xs">
+          
+          <div className="hidden md:flex items-center gap-2 font-mono text-xs">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -69,22 +84,45 @@ export default function Layout({ children }: LayoutProps) {
               </Link>
             ))}
           </div>
+
+          <button
+            className="md:hidden p-2 border-2 border-[#0a0a0a] font-mono text-xs"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? 'CLOSE' : 'MENU'}
+          </button>
         </nav>
       </div>
 
-      <main className="flex-1 pt-28">
+      <div
+        className={`mobile-menu fixed top-[100px] left-0 right-0 bottom-0 z-40 bg-[#fffef8] border-t-4 border-[#0a0a0a] ${mobileMenuOpen ? 'open' : ''}`}
+      >
+        <div className="flex flex-col p-6">
+          {navItems.map((item) => (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`py-4 px-6 font-mono text-lg border-b-2 border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-[#fffef8] transition-all ${isActive(item.path) ? 'bg-[#0a0a0a] text-[#fffef8]' : ''}`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <main className="flex-1 pt-24 md:pt-28">
         {children}
       </main>
 
       <footer className="border-t-4 border-[#0a0a0a] bg-[#0a0a0a] text-[#fffef8]">
         <div className="grid grid-cols-1 md:grid-cols-4 border-b-2 border-[#333]">
-          <div className="p-8 border-b-2 md:border-b-0 md:border-r-2 border-[#333]">
+          <div className="p-6 md:p-8 border-b-2 md:border-b-0 md:border-r-2 border-[#333]">
             <div className="font-display text-xl mb-4">SAMPLES▼CLICK</div>
             <p className="font-mono text-xs text-[#888] leading-relaxed">
               A marketplace for niche datasets. We deploy hardware in industries. We collect. We label. You click.
             </p>
           </div>
-          <div className="p-8 border-b-2 md:border-b-0 md:border-r-2 border-[#333]">
+          <div className="p-6 md:p-8 border-b-2 md:border-b-0 md:border-r-2 border-[#333]">
             <div className="font-mono text-xs text-[#ff3366] mb-4">// NAVIGATION</div>
             <div className="space-y-2">
               {navItems.map((item) => (
@@ -94,7 +132,7 @@ export default function Layout({ children }: LayoutProps) {
               ))}
             </div>
           </div>
-          <div className="p-8 border-b-2 md:border-b-0 md:border-r-2 border-[#333]">
+          <div className="p-6 md:p-8 border-b-2 md:border-b-0 md:border-r-2 border-[#333]">
             <div className="font-mono text-xs text-[#ff3366] mb-4">// CONTACT</div>
             <div className="space-y-2 font-mono text-sm">
               <a href="mailto:hello@samples.click" className="block hover:text-[#ff3366] transition-colors">hello@samples.click</a>
@@ -102,7 +140,7 @@ export default function Layout({ children }: LayoutProps) {
               <span>San Francisco, CA</span>
             </div>
           </div>
-          <div className="p-8">
+          <div className="p-6 md:p-8">
             <div className="font-mono text-xs text-[#ff3366] mb-4">// SYSTEM STATUS</div>
             <div className="font-mono text-sm space-y-2">
               <div className="flex items-center gap-2">
@@ -115,9 +153,9 @@ export default function Layout({ children }: LayoutProps) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row items-center justify-between p-6 font-mono text-xs text-[#888]">
+        <div className="flex flex-col md:flex-row items-center justify-between p-4 md:p-6 font-mono text-xs text-[#888]">
           <span>SAMPLES.CLICK © {new Date().getFullYear()}</span>
-          <div className="flex gap-6 mt-4 md:mt-0">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-4 md:mt-0">
             <Link to="/privacy" className="hover:text-[#fffef8] transition-colors">PRIVACY POLICY</Link>
             <Link to="/terms" className="hover:text-[#fffef8] transition-colors">TERMS OF SERVICE</Link>
             <Link to="/license" className="hover:text-[#fffef8] transition-colors">DATA LICENSE</Link>

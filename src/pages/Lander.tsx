@@ -68,22 +68,23 @@ export default function Lander() {
         }
       `}</style>
 
-      <section className={`px-6 py-20 transition-all duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
+      <section className={`px-4 md:px-6 py-12 md:py-20 transition-all duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
         <div className="max-w-6xl">
-          <div className="font-mono text-xs mb-6">// SCROLL[{Math.floor(scrollY)}px]</div>
-          <h1 className="font-display text-[12vw] leading-[0.85] tracking-tight uppercase">
+          <div className="font-mono text-xs mb-4 md:mb-6">// SCROLL[{Math.floor(scrollY)}px]</div>
+          <h1 className="font-display text-[15vw] md:text-[12vw] leading-[0.85] tracking-tight uppercase">
             <span className="block glitch" data-text="SAMPLES">SAMPLES</span>
             <span className="block text-[#ff3366]">FOR AI</span>
           </h1>
-          <p className="font-mono text-lg max-w-xl mt-8 leading-relaxed">
+          <p className="font-mono text-base md:text-lg max-w-xl mt-6 md:mt-8 leading-relaxed">
             A marketplace for niche datasets. We deploy hardware in industries. We collect. We label. You click. You download. You train.
           </p>
         </div>
       </section>
 
-      <section className={`px-6 py-12 border-t-4 border-[#0a0a0a] transition-all duration-1000 delay-200 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="font-mono text-xs mb-8">// CATALOG</div>
-        <div className="grid grid-cols-1 border-4 border-[#0a0a0a]">
+      <section className={`px-4 md:px-6 py-8 md:py-12 border-t-4 border-[#0a0a0a] transition-all duration-1000 delay-200 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="font-mono text-xs mb-6 md:mb-8">// CATALOG</div>
+        
+        <div className="hidden md:grid grid-cols-1 border-4 border-[#0a0a0a]">
           <div className="grid grid-cols-12 gap-0 font-mono text-xs bg-[#0a0a0a] text-[#fffef8]">
             <div className="col-span-1 p-3 border-r border-[#333]">#</div>
             <div className="col-span-5 p-3 border-r border-[#333]">DATASET</div>
@@ -102,31 +103,47 @@ export default function Lander() {
             </div>
           ))}
         </div>
+
+        <div className="md:hidden grid grid-cols-1 border-4 border-[#0a0a0a]">
+          {datasets.map((ds, i) => (
+            <div
+              key={ds.name}
+              className="p-4 border-t-2 border-[#0a0a0a] first:border-t-0 hover:bg-[#0a0a0a] hover:text-[#fffef8] transition-all cursor-pointer"
+            >
+              <div className="flex justify-between items-start mb-2">
+                <div className="font-mono text-xs text-[#999]">#{String(i + 1).padStart(2, '0')}</div>
+                <div className="font-display text-lg">${ds.price}</div>
+              </div>
+              <div className="font-display text-sm mb-1">{ds.name.replace(/_/g, ' ')}</div>
+              <div className="font-mono text-xs text-[#666]">{ds.qty.toLocaleString()} samples</div>
+            </div>
+          ))}
+        </div>
       </section>
 
-      <section className={`px-6 py-20 border-t-4 border-[#0a0a0a] bg-[#0a0a0a] text-[#fffef8] transition-all duration-1000 delay-400 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
+      <section className={`px-4 md:px-6 py-12 md:py-20 border-t-4 border-[#0a0a0a] bg-[#0a0a0a] text-[#fffef8] transition-all duration-1000 delay-400 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
           {[
             { num: '01', title: 'DEPLOY', desc: 'Hardware in real factories' },
             { num: '02', title: 'COLLECT', desc: 'Authentic training data' },
             { num: '03', title: 'DELIVER', desc: 'Instant download access' },
           ].map((step, i) => (
-            <div key={step.num} className={`p-8 ${i < 2 ? 'border-r-2 border-[#333]' : ''}`}>
-              <div className="font-display text-6xl text-[#ff3366] mb-4">{step.num}</div>
-              <h3 className="font-display text-2xl mb-2">{step.title}</h3>
+            <div key={step.num} className={`p-6 md:p-8 ${i < 2 ? 'md:border-r-2 border-b-2 md:border-b-0 border-[#333]' : ''}`}>
+              <div className="font-display text-5xl md:text-6xl text-[#ff3366] mb-4">{step.num}</div>
+              <h3 className="font-display text-xl md:text-2xl mb-2">{step.title}</h3>
               <p className="font-mono text-sm text-[#888]">{step.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className={`px-6 py-20 border-t-4 border-[#0a0a0a] transition-all duration-1000 delay-600 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+      <section className={`px-4 md:px-6 py-12 md:py-20 border-t-4 border-[#0a0a0a] transition-all duration-1000 delay-600 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
           <div>
-            <h2 className="font-display text-4xl md:text-6xl uppercase">START NOW</h2>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-6xl uppercase">START NOW</h2>
             <p className="font-mono text-sm text-[#666] mt-2">No waiting. No negotiation. Click to buy.</p>
           </div>
-          <button className="font-display text-xl px-12 py-6 bg-[#ff3366] text-[#fffef8] hover:bg-[#0a0a0a] transition-colors">
+          <button className="font-display text-lg md:text-xl px-8 md:px-12 py-4 md:py-6 bg-[#ff3366] text-[#fffef8] hover:bg-[#0a0a0a] transition-colors">
             GET ACCESS →
           </button>
         </div>
@@ -139,9 +156,9 @@ export default function Lander() {
           { v: '99.7%', l: 'ACCURACY' },
           { v: '<48H', l: 'DELIVERY' },
         ].map((stat, i) => (
-          <div key={stat.l} className={`p-8 text-center ${i < 3 ? 'border-r-2 md:border-r-4 border-[#0a0a0a]' : ''}`}>
-            <div className="font-display text-4xl md:text-5xl">{stat.v}</div>
-            <div className="font-mono text-xs text-[#666] mt-2">{stat.l}</div>
+          <div key={stat.l} className={`p-4 md:p-8 text-center ${i < 3 ? 'border-r-2 md:border-r-4 border-[#0a0a0a]' : ''} ${i % 2 === 0 ? 'border-b-2 md:border-b-0 border-[#0a0a0a]' : ''}`}>
+            <div className="font-display text-2xl md:text-4xl lg:text-5xl">{stat.v}</div>
+            <div className="font-mono text-xs text-[#666] mt-1 md:mt-2">{stat.l}</div>
           </div>
         ))}
       </section>
