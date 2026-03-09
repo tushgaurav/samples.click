@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Layout from '../components/Layout'
+import { comparison, industries, problems, solutions } from '../constants/why'
 
 export default function Why() {
   const [mounted, setMounted] = useState(false)
@@ -7,50 +8,6 @@ export default function Why() {
   useEffect(() => {
     setMounted(true)
   }, [])
-
-  const problems = [
-    {
-      title: 'SYNTHETIC DATA IS LIMITED',
-      desc: 'Simulated environments can never fully capture the chaos and edge cases of the real world. Your models fail when they encounter reality.',
-    },
-    {
-      title: 'CROWDSOURCING IS INCONSISTENT',
-      desc: 'Generic labeling platforms produce low-quality annotations from workers with no domain expertise. You spend months cleaning data.',
-    },
-    {
-      title: 'IN-HOUSE COLLECTION IS EXPENSIVE',
-      desc: 'Deploying hardware, hiring operators, and managing logistics costs millions. You burn runway on infrastructure instead of innovation.',
-    },
-  ]
-
-  const solutions = [
-    {
-      title: 'AUTHENTIC DATA',
-      desc: 'We deploy sensors and cameras in real factories, warehouses, hospitals, and fields. Every sample comes from actual operations.',
-      stat: '100%',
-      statLabel: 'REAL-WORLD DATA',
-    },
-    {
-      title: 'EXPERT ANNOTATION',
-      desc: 'Our labeling team includes domain specialists—roboticists, medical professionals, agricultural scientists—who understand your use case.',
-      stat: '99.7%',
-      statLabel: 'LABEL ACCURACY',
-    },
-    {
-      title: 'TURNKEY OPERATION',
-      desc: 'We handle hardware deployment, data collection, quality assurance, and delivery. You focus on training models.',
-      stat: '<48H',
-      statLabel: 'DELIVERY TIME',
-    },
-  ]
-
-  const comparison = [
-    { feature: 'Data Quality', us: '★★★★★', synthetic: '★★☆☆☆', crowdsourced: '★★★☆☆' },
-    { feature: 'Edge Cases', us: '★★★★★', synthetic: '★★☆☆☆', crowdsourced: '★★★★☆' },
-    { feature: 'Cost Efficiency', us: '★★★★☆', synthetic: '★★★★★', crowdsourced: '★★★☆☆' },
-    { feature: 'Time to Deploy', us: '★★★★★', synthetic: '★★★★★', crowdsourced: '★★★☆☆' },
-    { feature: 'Domain Expertise', us: '★★★★★', synthetic: '★☆☆☆☆', crowdsourced: '★★☆☆☆' },
-  ]
 
   return (
     <Layout>
@@ -159,16 +116,7 @@ export default function Why() {
           <div className="border-4 border-[#0a0a0a] p-8 bg-[#0a0a0a] text-[#fffef8]">
             <div className="font-mono text-xs mb-6 text-[#ff3366]">// INDUSTRIES WE SERVE</div>
             <div className="grid grid-cols-2 gap-4">
-              {[
-                'ROBOTICS',
-                'HEALTHCARE',
-                'MANUFACTURING',
-                'AGRICULTURE',
-                'LOGISTICS',
-                'AUTOMOTIVE',
-                'RETAIL',
-                'CONSTRUCTION',
-              ].map((ind) => (
+              {industries.map((ind) => (
                 <div key={ind} className="font-mono text-sm py-2 border-l-2 border-[#ff3366] pl-3">
                   {ind}
                 </div>

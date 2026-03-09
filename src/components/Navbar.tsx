@@ -1,13 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-
-const navItems = [
-  { path: '/', label: 'HOME' },
-  { path: '/about', label: 'ABOUT' },
-  { path: '/request', label: 'REQUEST' },
-  { path: '/why', label: 'WHY' },
-  { path: '/careers', label: 'CAREERS' },
-]
+import { brand, marqueePhrases, navItems } from '../constants/globals'
 
 export default function Navbar() {
   const location = useLocation()
@@ -24,13 +17,13 @@ export default function Navbar() {
       <div className="fixed top-0 left-0 right-0 z-50 bg-[#fffef8] border-b-4 border-[#0a0a0a]">
         <div className="overflow-hidden py-2 border-b-2 border-[#0a0a0a]">
           <div className="marquee whitespace-nowrap font-mono text-sm">
-            <span className="mx-8">▸ DATASETS FOR ROBOTICS ▸ INDUSTRIAL TRAINING DATA ▸ MEDICAL HANDWRITING ▸ ROBOTIC MANIPULATION ▸ SCALE YOUR AI ▸ </span>
-            <span className="mx-8">▸ DATASETS FOR ROBOTICS ▸ INDUSTRIAL TRAINING DATA ▸ MEDICAL HANDWRITING ▸ ROBOTIC MANIPULATION ▸ SCALE YOUR AI ▸ </span>
+            <span className="mx-8">▸ {marqueePhrases.join(' ▸ ')} ▸ </span>
+            <span className="mx-8">▸ {marqueePhrases.join(' ▸ ')} ▸ </span>
           </div>
         </div>
         <nav className="flex items-center justify-between px-4 md:px-6 py-4">
           <Link to="/" className="font-display text-xl md:text-2xl tracking-tight hover:text-[#ff3366] transition-colors">
-            SAMPLES▼CLICK
+            {brand.name}
           </Link>
           
           <div className="hidden md:flex items-center gap-2 font-mono text-xs">
@@ -72,5 +65,3 @@ export default function Navbar() {
     </>
   )
 }
-
-export { navItems }

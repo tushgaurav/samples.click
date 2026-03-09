@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Layout from '../components/Layout'
+import { licenseConditions, licenseLastUpdated, licenseTypes } from '../constants/license'
 
 export default function License() {
   const [mounted, setMounted] = useState(false)
@@ -7,58 +8,6 @@ export default function License() {
   useEffect(() => {
     setMounted(true)
   }, [])
-
-  const licenseTypes = [
-    {
-      name: 'RESEARCH LICENSE',
-      code: 'RES-001',
-      description: 'For academic and non-commercial research purposes only. Datasets may be used in publications with proper attribution. Redistribution or commercial use is strictly prohibited.',
-      permissions: ['Academic research', 'Publications with attribution', 'Single institution use'],
-      restrictions: ['No commercial use', 'No redistribution', 'No derivative works for resale'],
-    },
-    {
-      name: 'COMMERCIAL LICENSE',
-      code: 'COM-002',
-      description: 'For commercial product development and internal business use. Includes broader usage rights for training machine learning models in commercial applications.',
-      permissions: ['Commercial product development', 'ML model training', 'Internal business use'],
-      restrictions: ['No dataset redistribution', 'No white-label resale', 'Per-seat limitations apply'],
-    },
-    {
-      name: 'ENTERPRISE LICENSE',
-      code: 'ENT-003',
-      description: 'Comprehensive license for large-scale deployments. Includes custom terms, unlimited seats, and dedicated support. Contact sales for enterprise pricing.',
-      permissions: ['Unlimited internal use', 'Custom derivatives', 'Priority support', 'SLA guarantees'],
-      restrictions: ['No competing dataset products', 'Audit rights reserved'],
-    },
-  ]
-
-  const conditions = [
-    {
-      id: '01',
-      title: 'ATTRIBUTION REQUIREMENTS',
-      content: 'All dataset usage must include proper attribution to Samples.click as the data source. Attribution format: "Data provided by Samples.click (samples.click)". Academic publications must cite our dataset DOI when available.',
-    },
-    {
-      id: '02',
-      title: 'DATA INTEGRITY',
-      content: 'Datasets must be used as provided. Modification of metadata, labels, or source attribution is prohibited. Derivative works must clearly distinguish original data from modifications.',
-    },
-    {
-      id: '03',
-      title: 'PROHIBITED USES',
-      content: 'Datasets may not be used for surveillance, discrimination, or any purpose that violates applicable laws or human rights. We reserve the right to terminate licenses for users who violate these restrictions.',
-    },
-    {
-      id: '04',
-      title: 'AUDIT RIGHTS',
-      content: 'Samples.click reserves the right to audit your use of licensed datasets to ensure compliance. Enterprise licensees must maintain usage records for three years and provide them upon request.',
-    },
-    {
-      id: '05',
-      title: 'WARRANTY DISCLAIMER',
-      content: 'Datasets are provided "as is" without warranty of any kind, express or implied. We do not warrant accuracy, completeness, or fitness for any particular purpose. Use at your own risk.',
-    },
-  ]
 
   return (
     <Layout>
@@ -75,7 +24,7 @@ export default function License() {
       <section className={`px-6 py-12 border-b-4 border-[#0a0a0a] bg-[#0a0a0a] text-[#fffef8] transition-all duration-1000 delay-100 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
         <div className="max-w-4xl">
           <div className="font-mono text-xs mb-4 text-[#ff3366]">// LAST UPDATED</div>
-          <p className="font-mono text-lg">February 13, 2026</p>
+          <p className="font-mono text-lg">{licenseLastUpdated}</p>
           <p className="font-mono text-sm text-[#888] mt-4">
             Each dataset on Samples.click is licensed under specific terms. This document outlines our standard license types and general conditions that apply to all dataset usage.
           </p>
@@ -123,10 +72,10 @@ export default function License() {
       <section className={`px-6 py-16 border-b-4 border-[#0a0a0a] bg-[#fffef8] transition-all duration-1000 delay-300 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
         <div className="font-mono text-xs mb-8 text-[#ff3366]">// STANDARD CONDITIONS</div>
         <div className="max-w-4xl">
-          {conditions.map((condition, i) => (
+          {licenseConditions.map((condition, i) => (
             <div
               key={condition.id}
-              className={`py-10 ${i < conditions.length - 1 ? 'border-b-2 border-[#0a0a0a]' : ''}`}
+              className={`py-10 ${i < licenseConditions.length - 1 ? 'border-b-2 border-[#0a0a0a]' : ''}`}
             >
               <div className="grid grid-cols-1 md:grid-cols-[100px_1fr] gap-6">
                 <div className="font-display text-4xl text-[#ff3366]">{condition.id}</div>

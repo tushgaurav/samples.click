@@ -1,5 +1,13 @@
 import { useEffect, useState } from 'react'
 import Layout from '../components/Layout'
+import {
+  team,
+  milestones,
+  pageTitle,
+  mission,
+  headquarters,
+  satelliteOffices,
+} from '../constants/about'
 
 export default function About() {
   const [mounted, setMounted] = useState(false)
@@ -8,32 +16,14 @@ export default function About() {
     setMounted(true)
   }, [])
 
-  const team = [
-    { name: 'MARCUS CHEN', role: 'FOUNDER/CEO', id: '001' },
-    { name: 'SARAH OKONKWO', role: 'CTO', id: '002' },
-    { name: 'DAVE RODRIGUEZ', role: 'HEAD OF OPS', id: '003' },
-    { name: 'JENNIFER PARK', role: 'LEAD ENGINEER', id: '004' },
-    { name: 'ALEX NOVAK', role: 'DATA SCIENTIST', id: '005' },
-    { name: 'PRIYA SHARMA', role: 'QUALITY LEAD', id: '006' },
-  ]
-
-  const milestones = [
-    { year: '2019', event: 'FOUNDED IN SAN FRANCISCO' },
-    { year: '2020', event: 'FIRST 100 INDUSTRIAL PARTNERSHIPS' },
-    { year: '2021', event: 'SERIES A: $12M RAISED' },
-    { year: '2022', event: 'EXPANDED TO EUROPE & ASIA' },
-    { year: '2023', event: '1M+ SAMPLES DELIVERED' },
-    { year: '2024', event: '50+ ACTIVE INDUSTRIES' },
-  ]
-
   return (
     <Layout>
       <section className={`px-6 py-20 border-b-4 border-[#0a0a0a] transition-all duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
         <div className="max-w-6xl">
           <div className="font-mono text-xs mb-6">// PAGE: ABOUT</div>
           <h1 className="font-display text-[10vw] leading-[0.9] tracking-tight uppercase">
-            <span className="block">WHO WE</span>
-            <span className="block text-[#ff3366]">ARE</span>
+            <span className="block">{pageTitle.line1}</span>
+            <span className="block text-[#ff3366]">{pageTitle.line2}</span>
           </h1>
         </div>
       </section>
@@ -42,10 +32,12 @@ export default function About() {
         <div className="max-w-4xl">
           <div className="font-mono text-xs mb-4 text-[#ff3366]">// MISSION</div>
           <p className="font-mono text-xl md:text-2xl leading-relaxed">
-            We believe that the bottleneck to AI progress isn't algorithms—it's <span className="bg-[#0a0a0a] text-[#fffef8] px-2">DATA</span>. Real data. Authentic data. Data from the messy, complex world of actual industrial operations.
+            {mission.mainText.before}
+            <span className="bg-[#0a0a0a] text-[#fffef8] px-2">{mission.mainText.highlight}</span>
+            {mission.mainText.after}
           </p>
           <p className="font-mono text-lg mt-8 text-[#666] leading-relaxed">
-            Samples.click was founded on a simple observation: robotics companies were spending millions collecting training data that was either synthetic (low fidelity) or outsourced to crowdsourcing platforms (inconsistent quality). We built something better.
+            {mission.subText}
           </p>
         </div>
       </section>
@@ -84,28 +76,22 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
             <div className="font-mono text-xs mb-4 text-[#ff3366]">// HEADQUARTERS</div>
-            <div className="font-display text-3xl mb-4">SAN FRANCISCO</div>
+            <div className="font-display text-3xl mb-4">{headquarters.city}</div>
             <div className="font-mono text-sm text-[#666] space-y-1">
-              <p>548 Market Street, Suite 72</p>
-              <p>San Francisco, CA 94104</p>
-              <p>United States</p>
+              {headquarters.address.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
             </div>
           </div>
           <div>
             <div className="font-mono text-xs mb-4 text-[#ff3366]">// SATELLITE OFFICES</div>
             <div className="space-y-6">
-              <div>
-                <div className="font-display text-xl">BERLIN</div>
-                <div className="font-mono text-sm text-[#666]">Friedrichstraße 123, 10117</div>
-              </div>
-              <div>
-                <div className="font-display text-xl">TOKYO</div>
-                <div className="font-mono text-sm text-[#666]">Shibuya-ku, 150-0002</div>
-              </div>
-              <div>
-                <div className="font-display text-xl">SINGAPORE</div>
-                <div className="font-mono text-sm text-[#666]">Marina Bay Financial Centre</div>
-              </div>
+              {satelliteOffices.map((office) => (
+                <div key={office.city}>
+                  <div className="font-display text-xl">{office.city}</div>
+                  <div className="font-mono text-sm text-[#666]">{office.address}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -114,8 +100,11 @@ export default function About() {
       <section className={`px-6 py-20 bg-[#ff3366] text-[#fffef8] transition-all duration-1000 delay-500 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-display text-4xl md:text-6xl uppercase mb-6">WORK WITH US</h2>
-          <p className="font-mono text-lg mb-8">Join a team that's shaping the future of AI training data.</p>
-          <a href="/careers" className="inline-block font-display text-xl px-12 py-6 bg-[#0a0a0a] text-[#fffef8] hover:bg-[#fffef8] hover:text-[#0a0a0a] transition-colors">
+          <p className="font-mono text-lg mb-8">Join a team that&apos;s shaping the future of AI training data.</p>
+          <a
+            href="/careers"
+            className="inline-block font-display text-xl px-12 py-6 bg-[#0a0a0a] text-[#fffef8] hover:bg-[#fffef8] hover:text-[#0a0a0a] transition-colors"
+          >
             VIEW OPENINGS →
           </a>
         </div>

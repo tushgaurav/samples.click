@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
+import { notFoundOptions } from '../constants/notFound'
 
 export default function NotFound() {
   const [mounted, setMounted] = useState(false)
@@ -26,30 +27,17 @@ export default function NotFound() {
       <section className={`px-6 py-16 border-b-4 border-[#0a0a0a] transition-all duration-1000 delay-200 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
         <div className="font-mono text-xs mb-8 text-[#ff3366]">// WHERE TO GO</div>
         <div className="grid grid-cols-1 md:grid-cols-3 border-4 border-[#0a0a0a]">
-          <Link
-            to="/"
-            className="p-8 border-b-4 md:border-b-0 md:border-r-4 border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-[#fffef8] transition-all group"
-          >
-            <div className="font-mono text-xs text-[#999] group-hover:text-[#888] mb-2">OPT_01</div>
-            <div className="font-display text-2xl mb-2">HOME</div>
-            <div className="font-mono text-sm text-[#666] group-hover:text-[#aaa]">Return to homepage</div>
-          </Link>
-          <Link
-            to="/request"
-            className="p-8 border-b-4 md:border-b-0 md:border-r-4 border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-[#fffef8] transition-all group"
-          >
-            <div className="font-mono text-xs text-[#999] group-hover:text-[#888] mb-2">OPT_02</div>
-            <div className="font-display text-2xl mb-2">REQUEST DATA</div>
-            <div className="font-mono text-sm text-[#666] group-hover:text-[#aaa]">Submit a custom dataset request</div>
-          </Link>
-          <Link
-            to="/about"
-            className="p-8 hover:bg-[#0a0a0a] hover:text-[#fffef8] transition-all group"
-          >
-            <div className="font-mono text-xs text-[#999] group-hover:text-[#888] mb-2">OPT_03</div>
-            <div className="font-display text-2xl mb-2">ABOUT</div>
-            <div className="font-mono text-sm text-[#666] group-hover:text-[#aaa]">Learn about Samples.click</div>
-          </Link>
+          {notFoundOptions.map((option, i) => (
+            <Link
+              key={option.id}
+              to={option.to}
+              className={`p-8 hover:bg-[#0a0a0a] hover:text-[#fffef8] transition-all group ${i < notFoundOptions.length - 1 ? 'border-b-4 md:border-b-0 md:border-r-4 border-[#0a0a0a]' : ''}`}
+            >
+              <div className="font-mono text-xs text-[#999] group-hover:text-[#888] mb-2">{option.id}</div>
+              <div className="font-display text-2xl mb-2">{option.title}</div>
+              <div className="font-mono text-sm text-[#666] group-hover:text-[#aaa]">{option.description}</div>
+            </Link>
+          ))}
         </div>
       </section>
 

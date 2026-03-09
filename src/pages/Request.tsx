@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Layout from '../components/Layout'
+import { industryOptions, requestStats, requestSteps, urgencyLevels } from '../constants/request'
 
 export default function Request() {
   const [mounted, setMounted] = useState(false)
@@ -71,12 +72,7 @@ export default function Request() {
 
       <section className={`px-6 py-16 border-b-4 border-[#0a0a0a] bg-[#0a0a0a] text-[#fffef8] transition-all duration-1000 delay-100 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
-          {[
-            { num: '01', title: 'SUBMIT', desc: 'Describe your dataset needs' },
-            { num: '02', title: 'REVIEW', desc: 'We assess feasibility & quote' },
-            { num: '03', title: 'DEPLOY', desc: 'Hardware goes to the field' },
-            { num: '04', title: 'DELIVER', desc: 'Data arrives in your inbox' },
-          ].map((step, i) => (
+          {requestSteps.map((step, i) => (
             <div key={step.num} className={`p-6 ${i < 3 ? 'border-r-2 border-[#333]' : ''}`}>
               <div className="font-display text-4xl text-[#ff3366] mb-2">{step.num}</div>
               <h3 className="font-display text-lg mb-1">{step.title}</h3>
@@ -141,14 +137,11 @@ export default function Request() {
                   className="w-full font-mono text-lg bg-transparent border-b-2 border-[#0a0a0a] pb-2 focus:border-[#ff3366] outline-none transition-colors cursor-pointer"
                 >
                   <option value="">Select industry</option>
-                  <option value="robotics">ROBOTICS</option>
-                  <option value="healthcare">HEALTHCARE</option>
-                  <option value="manufacturing">MANUFACTURING</option>
-                  <option value="agriculture">AGRICULTURE</option>
-                  <option value="logistics">LOGISTICS</option>
-                  <option value="automotive">AUTOMOTIVE</option>
-                  <option value="retail">RETAIL</option>
-                  <option value="other">OTHER</option>
+                  {industryOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -183,7 +176,7 @@ export default function Request() {
             <div className="border-b-2 border-[#0a0a0a] p-6">
               <label className="block font-mono text-xs mb-2 text-[#666]">// URGENCY_LEVEL</label>
               <div className="flex gap-4 flex-wrap">
-                {['standard', 'expedited', 'rush'].map((level) => (
+                {urgencyLevels.map((level) => (
                   <label key={level} className="flex items-center gap-2 cursor-pointer group">
                     <input
                       type="radio"
@@ -232,21 +225,13 @@ export default function Request() {
 
       <section className={`px-6 py-16 border-t-4 border-[#0a0a0a] transition-all duration-1000 delay-300 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="border-2 border-[#0a0a0a] p-6">
-            <div className="font-mono text-xs text-[#ff3366] mb-2">// MINIMUM ORDER</div>
-            <div className="font-display text-3xl">500</div>
-            <div className="font-mono text-sm text-[#666]">samples per request</div>
-          </div>
-          <div className="border-2 border-[#0a0a0a] p-6">
-            <div className="font-mono text-xs text-[#ff3366] mb-2">// STANDARD TURNAROUND</div>
-            <div className="font-display text-3xl">2-4</div>
-            <div className="font-mono text-sm text-[#666]">weeks for delivery</div>
-          </div>
-          <div className="border-2 border-[#0a0a0a] p-6">
-            <div className="font-mono text-xs text-[#ff3366] mb-2">// STARTING AT</div>
-            <div className="font-display text-3xl">$1,500</div>
-            <div className="font-mono text-sm text-[#666]">per custom dataset</div>
-          </div>
+          {requestStats.map((item) => (
+            <div key={item.title} className="border-2 border-[#0a0a0a] p-6">
+              <div className="font-mono text-xs text-[#ff3366] mb-2">// {item.title}</div>
+              <div className="font-display text-3xl">{item.value}</div>
+              <div className="font-mono text-sm text-[#666]">{item.detail}</div>
+            </div>
+          ))}
         </div>
       </section>
     </Layout>
