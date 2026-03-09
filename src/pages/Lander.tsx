@@ -70,7 +70,6 @@ export default function Lander() {
 
       <section className={`px-4 md:px-6 py-12 md:py-20 transition-all duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
         <div className="max-w-6xl">
-          <div className="font-mono text-xs mb-4 md:mb-6">// SCROLL[{Math.floor(scrollY)}px]</div>
           <h1 className="font-display text-[15vw] md:text-[12vw] leading-[0.85] tracking-tight uppercase">
             <span className="block glitch" data-text="SAMPLES">SAMPLES</span>
             <span className="block text-[#ff3366]">FOR AI</span>
