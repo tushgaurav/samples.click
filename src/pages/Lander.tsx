@@ -4,13 +4,9 @@ import { datasets, processSteps, stats } from '../constants/lander'
 
 export default function Lander() {
   const [mounted, setMounted] = useState(false)
-  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
     setMounted(true)
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
