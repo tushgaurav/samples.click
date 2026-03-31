@@ -11,6 +11,7 @@ import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import License from './pages/License'
 import Status from './pages/Status'
+import Marketplace from './pages/Marketplace'
 import NotFound from './pages/NotFound'
 
 createRoot(document.getElementById('root')!).render(
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/license" element={<License />} />
+        <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/status" element={<Status />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

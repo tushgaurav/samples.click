@@ -14,6 +14,7 @@ export const marqueePhrases = [
 
 export const navItems = [
   { path: '/', label: 'HOME' },
+  { path: '/marketplace', label: 'MARKETPLACE' },
   { path: '/about', label: 'ABOUT' },
   { path: '/request', label: 'REQUEST' },
   { path: '/why', label: 'WHY' },
