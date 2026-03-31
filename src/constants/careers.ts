@@ -1,93 +1,48 @@
 export const jobs = [
   {
     id: 'ENG-001',
-    title: 'SENIOR ML ENGINEER',
+    title: 'COBOT OPERATOR',
     department: 'ENGINEERING',
-    location: 'SAN FRANCISCO',
-    type: 'FULL-TIME',
+    location: 'NOIDA',
+    type: 'CONTRACT',
     description:
-      "Lead the development of our data processing pipelines and quality assurance systems. You'll work directly with our deployment teams to ensure data integrity from collection to delivery.",
+      'Program and operate collaborative robots (cobots) from Elite, Fanuc, Universal Robots, and other leading manufacturers. You\'ll be responsible for writing and optimizing cobot programs for data collection workflows, ensuring smooth operation, troubleshooting issues, and maintaining uptime across our deployment hardware.',
     requirements: [
-      '5+ years experience in ML/AI systems',
-      'Strong Python and PyTorch/TensorFlow expertise',
-      'Experience with distributed data processing',
-      'Background in computer vision or robotics preferred',
+      'Hands-on experience programming cobots (Elite, Fanuc, UR, or similar)',
+      'Understanding of robot kinematics, teach pendants, and motion planning',
+      'Ability to debug and resolve hardware/software issues on-site',
+      'Familiarity with industrial safety standards for collaborative robots',
+      'Strong mechanical aptitude and attention to detail',
     ],
   },
   {
-    id: 'OPS-002',
-    title: 'DEPLOYMENT OPERATIONS LEAD',
-    department: 'OPERATIONS',
-    location: 'SAN FRANCISCO',
-    type: 'FULL-TIME',
-    description:
-      "Manage hardware deployments across our partner facilities. You'll coordinate installation, maintenance, and data collection protocols with on-site teams.",
-    requirements: [
-      '3+ years in operations or project management',
-      'Experience with IoT or industrial hardware',
-      'Excellent communication and vendor management skills',
-      'Willingness to travel up to 30%',
-    ],
-  },
-  {
-    id: 'DATA-003',
-    title: 'DATA QUALITY SPECIALIST',
-    department: 'DATA',
-    location: 'REMOTE',
-    type: 'FULL-TIME',
-    description:
-      "Ensure our datasets meet the highest quality standards. You'll develop annotation guidelines, train labelers, and implement quality control processes.",
-    requirements: [
-      '2+ years in data annotation or quality assurance',
-      'Experience with annotation tools and workflows',
-      'Strong attention to detail',
-      'Background in a technical domain (robotics, medical, etc.) preferred',
-    ],
-  },
-  {
-    id: 'SALE-004',
-    title: 'ENTERPRISE ACCOUNT EXECUTIVE',
+    id: 'SALE-002',
+    title: 'SALES REPRESENTATIVE',
     department: 'SALES',
-    location: 'SAN FRANCISCO',
-    type: 'FULL-TIME',
+    location: 'REMOTE',
+    type: 'CONTRACT',
     description:
-      "Drive enterprise sales for our custom dataset offerings. You'll work with robotics companies, research labs, and AI teams to understand their data needs and close deals.",
+      'Drive outbound sales for our custom dataset offerings. You\'ll identify and reach out to robotics companies, AI research labs, and enterprise teams who need high-quality training data. Build relationships, understand their data needs, and close deals that fuel our growth.',
     requirements: [
-      '5+ years in enterprise B2B sales',
-      'Experience selling to technical audiences',
-      'Track record of meeting/exceeding quota',
-      'Understanding of AI/ML landscape preferred',
-    ],
-  },
-  {
-    id: 'PART-005',
-    title: 'PARTNERSHIP MANAGER',
-    department: 'PARTNERSHIPS',
-    location: 'BERLIN',
-    type: 'FULL-TIME',
-    description:
-      "Build and maintain relationships with industrial partners who host our hardware. You'll expand our deployment network across Europe and ensure partner satisfaction.",
-    requirements: [
-      '4+ years in partnerships or business development',
-      'Experience in industrial/manufacturing sectors',
-      'Fluent in English and German',
-      'Strong negotiation and relationship-building skills',
+      'Experience in B2B sales, preferably in tech or data services',
+      'Ability to communicate technical value propositions clearly',
+      'Self-motivated with strong outreach and follow-up discipline',
+      'Familiarity with AI/ML landscape is a plus',
+      'Comfortable working independently in a remote-first setup',
     ],
   },
 ]
 
 export const benefits = [
-  { title: 'EQUITY', desc: 'Competitive equity package' },
-  { title: 'HEALTH', desc: 'Premium medical, dental, vision' },
+  { title: 'EQUITY', desc: 'Early-stage equity for the right people' },
   { title: 'REMOTE', desc: 'Flexible work arrangements' },
-  { title: 'LEARNING', desc: '$5K annual learning budget' },
-  { title: 'EQUIPMENT', desc: 'Top-tier equipment budget' },
-  { title: 'TIME OFF', desc: 'Unlimited PTO policy' },
+  { title: 'LEARNING', desc: 'Grow with a fast-moving startup' },
+  { title: 'EQUIPMENT', desc: 'Tools you need to do great work' },
 ]
 
 export const cultureStats = [
-  { v: '47', l: 'TEAM MEMBERS' },
-  { v: '12', l: 'COUNTRIES' },
-  { v: '8', l: 'TIME ZONES' },
+  { v: '1', l: 'TEAM MEMBER' },
+  { v: '1', l: 'COUNTRY' },
+  { v: '1', l: 'TIME ZONE' },
   { v: '∞', l: 'CURIOSITY' },
 ]

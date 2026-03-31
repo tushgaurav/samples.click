@@ -24,7 +24,7 @@ export const contact = {
   email: 'hello@samples.click',
   phone: '+1 (234) 567-890',
   phoneHref: 'tel:+1234567890',
-  location: 'San Francisco, CA',
+  location: 'Noida, India',
 }
 
 export const legalLinks = [

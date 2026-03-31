@@ -26,7 +26,7 @@ export default function Careers() {
       </section>
 
       <section className={`px-6 py-16 border-b-4 border-[#0a0a0a] bg-[#0a0a0a] text-[#fffef8] transition-all duration-1000 delay-100 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-0">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
           {benefits.map((b, i) => (
             <div key={b.title} className={`p-6 text-center ${i < benefits.length - 1 ? 'border-r-2 border-[#333]' : ''}`}>
               <div className="font-display text-xl mb-2">{b.title}</div>

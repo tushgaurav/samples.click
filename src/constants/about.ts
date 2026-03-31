@@ -1,19 +1,9 @@
 export const team = [
-  { name: 'MARCUS CHEN', role: 'FOUNDER/CEO', id: '001' },
-  { name: 'SARAH OKONKWO', role: 'CTO', id: '002' },
-  { name: 'DAVE RODRIGUEZ', role: 'HEAD OF OPS', id: '003' },
-  { name: 'JENNIFER PARK', role: 'LEAD ENGINEER', id: '004' },
-  { name: 'ALEX NOVAK', role: 'DATA SCIENTIST', id: '005' },
-  { name: 'PRIYA SHARMA', role: 'QUALITY LEAD', id: '006' },
+  { name: 'TUSHAR GAURAV', role: 'FOUNDER & SOFTWARE DEVELOPER', id: '001', link: 'https://tushgaurav.com' },
 ]
 
 export const milestones = [
-  { year: '2019', event: 'FOUNDED IN SAN FRANCISCO' },
-  { year: '2020', event: 'FIRST 100 INDUSTRIAL PARTNERSHIPS' },
-  { year: '2021', event: 'SERIES A: $12M RAISED' },
-  { year: '2022', event: 'EXPANDED TO EUROPE & ASIA' },
-  { year: '2023', event: '1M+ SAMPLES DELIVERED' },
-  { year: '2024', event: '50+ ACTIVE INDUSTRIES' },
+  { year: '2026', event: 'FOUNDED SAMPLES.CLICK' },
 ]
 
 export const pageTitle = {
@@ -33,12 +23,11 @@ export const mission = {
 }
 
 export const headquarters = {
-  city: 'SAN FRANCISCO',
-  address: ['548 Market Street, Suite 72', 'San Francisco, CA 94104', 'United States'],
+  city: 'NOIDA',
+  address: ['Second Floor, A-48, Sector-67', 'Noida, Gautam Buddha Nagar', 'Uttar Pradesh, 201301, India'],
 }
 
-export const satelliteOffices = [
-  { city: 'BERLIN', address: 'Friedrichstraße 123, 10117' },
-  { city: 'TOKYO', address: 'Shibuya-ku, 150-0002' },
-  { city: 'SINGAPORE', address: 'Marina Bay Financial Centre' },
-]
+export const locationCoordinates = {
+  lat: '28.5706°N',
+  lng: '77.3261°E',
+}
